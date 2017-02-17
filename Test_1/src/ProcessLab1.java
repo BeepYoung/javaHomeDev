@@ -36,7 +36,6 @@ public class ProcessLab1 {
 			--divider;
 		}
 		System.out.println("The highest divider is:");
-		System.out.println("First COMMIT GIT");//CHECK THIS
 		System.out.println(divider);
 		return 0;
 	}
