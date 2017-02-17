@@ -16,7 +16,7 @@ public class ProcessLab1 {
 				return 2;
 			}
 		}
-		System.out.println("List of arguments:");
+		System.out.println("List of arguments:");//just print
 		for(int i=0;i < proc_data.length;i++){
 			System.out.println(proc_data[i]);
 		}
