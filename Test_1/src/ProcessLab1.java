@@ -5,7 +5,7 @@ public class ProcessLab1 {
 	public int process(String args[]){
 		if(args.length !=3){
 			System.err.println("Wrong number of arguments!");
-			return 1;
+			System.exit(1);
 		}
 		Integer[] proc_data = new Integer[args.length];
 		
@@ -13,7 +13,7 @@ public class ProcessLab1 {
 			proc_data[i] = Integer.parseInt(args[i]);
 			if(proc_data[i]<=0){
 				System.err.println("Wrong arguments. Negative value");
-				return 2;
+				System.exit(2);
 			}
 		}
 		System.out.println("List of arguments:");
