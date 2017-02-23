@@ -5,14 +5,12 @@ public class Snake extends Creature implements Wriggle {
 	
 	public void whoAmI(){
 		System.out.println("I'm " + name);
-	}
-
-	@Override
-	public void activity() {
-		whoAmI();
 		creep();
 		wriggle();
 	}
+
+
+
 
 	@Override
 	public void creep() {

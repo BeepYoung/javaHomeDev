@@ -5,8 +5,9 @@ public class Main {
 	public static void main(String[] args) {
 		try{
 			Integer ArraySize = new Integer(args[0]);
-			Creature[] creeps = new Creature[ArraySize];
+			Creep[] creeps = new Creep[ArraySize];
 			Random rand = new Random();
+			System.out.println("Count of creeps " + ArraySize);
 			for(int i = 0; i<ArraySize;i++){
 				if(rand.nextInt(2) == 0){
 					creeps[i] = new Snake();
@@ -17,7 +18,7 @@ public class Main {
 			}
 
 			for(int i = 0;i<ArraySize;i++){
-				creeps[i].activity();
+				creeps[i].whoAmI();
 				System.out.println();
 			}
 			

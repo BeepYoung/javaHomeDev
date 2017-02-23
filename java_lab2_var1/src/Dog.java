@@ -5,6 +5,7 @@ public class Dog extends Creature implements Creep{
 	
 	public void whoAmI(){
 		System.out.println("I'm " + name);
+		creep();
 	}
 
 	@Override
@@ -13,10 +14,5 @@ public class Dog extends Creature implements Creep{
 		
 	}
 
-	@Override
-	public void activity() {
-		whoAmI();
-		creep();
-		
-	}
+
 }

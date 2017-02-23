@@ -11,6 +11,6 @@ public abstract class Creature {
 		return this.name;
 	}
 	
-	public abstract void activity();
+
 	
 }
