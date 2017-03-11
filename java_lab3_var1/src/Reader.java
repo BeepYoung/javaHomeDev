@@ -2,27 +2,27 @@
 public class Reader implements Runnable{
 	private int comandCounter;
 	private Store store;
-//	private final Object sync = new Object();
+	private Object sync = new Object();
 	
-	public Reader(Store store,int comandCounter){
+	public Reader(Store store,int comandCounter, Object o){
 		this.store = store;
 		this.comandCounter = comandCounter;
+		this.sync = o;
 	}
 	
 	public void run() {
-	//	while(comandCounter>0){
-	//		synchronized(sync){
-				try {
+		while(comandCounter>0){
+			try {
+				synchronized(sync){
 					store.read();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					sync.notify();
+					sync.wait();
 				}
-				comandCounter--;
-	//			System.out.println(comandCounter);
-	//			System.out.println();
-//			}
-//		}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			comandCounter--;
+		}
 	}
 	
 }

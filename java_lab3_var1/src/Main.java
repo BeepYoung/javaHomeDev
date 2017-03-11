@@ -3,16 +3,16 @@ public class Main {
 
 	public static void main(String[] args) {
 		try{
+			Object sync = new Object();
 			int counter = new Integer(Integer.parseInt(args[0]));
 			Store store = new Store();
-			Writer writer = new Writer(store,counter);
-			Reader reader = new Reader(store,counter);
-			Thread t1 = new Thread(writer,"writer thread");
+			Thread t1 = new Thread(new Writer(store,counter,sync),"writer");
+			Thread t2 = new Thread(new Reader(store,counter,sync),"reader");
+			
 			t1.start();
-			Thread.sleep(1000);
-			Thread t2 = new Thread(reader,"reader thread");
 			t2.start();
-		//	System.out.println("Programm done!");
+			
+		//	System.out.println("Program done!");
 		}
 		catch(Exception ex){
 			System.err.println(ex.getMessage());
