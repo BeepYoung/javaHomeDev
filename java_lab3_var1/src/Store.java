@@ -1,18 +1,26 @@
 import java.util.Random;
 
 public class Store {
-	
-	public void read() throws InterruptedException{
+	public synchronized void read() throws InterruptedException{
+
+			this.wait();	
 			info();
 			System.out.println("I have read new integer: " + currInt);
 			System.out.println();
+			this.notify();
+		
+			
 	}
 	
-	public void write() throws InterruptedException{
+	public synchronized void write() throws InterruptedException{
+		synchronized(this){
 			info();
-			currInt = r.nextInt(9999);
+			this.currInt = r.nextInt(9999);
 			System.out.println("Number " + currInt + " just writed");
 			System.out.println();
+			this.notify();
+			this.wait();
+		}
 	}
 	
 	public void info(){

@@ -1,27 +1,24 @@
 
-public class Reader implements Runnable{
+public class Reader extends Thread{
 	private int comandCounter;
 	private Store store;
-	private Object sync = new Object();
+    
 	
-	public Reader(Store store,int comandCounter, Object o){
+	public Reader(Store store,int comandCounter){
+		this.setName("Reader");
 		this.store = store;
 		this.comandCounter = comandCounter;
-		this.sync = o;
+
 	}
 	
 	public void run() {
-		while(comandCounter>0){
+		for(int i=0;i<comandCounter;i++){
 			try {
-				synchronized(sync){
-					store.read();
-					sync.notify();
-					sync.wait();
-				}
+				store.read();
 			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			comandCounter--;
 		}
 	}
 	

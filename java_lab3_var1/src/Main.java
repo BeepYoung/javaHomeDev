@@ -3,20 +3,16 @@ public class Main {
 
 	public static void main(String[] args) {
 		try{
-			Object sync = new Object();
-			int counter = new Integer(Integer.parseInt(args[0]));
-			Store store = new Store();
-			Thread t1 = new Thread(new Writer(store,counter,sync),"writer");
-			Thread t2 = new Thread(new Reader(store,counter,sync),"reader");
+			int numComands = new Integer(args[0]);
+			Store someStore = new Store();
+			Writer writer = new Writer(someStore,numComands);
+			Reader reader = new Reader(someStore,numComands);
 			
-			t1.start();
-			t2.start();
-			
-		//	System.out.println("Program done!");
+			reader.start();
+			writer.start();
 		}
 		catch(Exception ex){
 			System.err.println(ex.getMessage());
-			System.exit(1);
 		}
 	}
 
